@@ -30,7 +30,7 @@ source venv/bin/activate
 It is recommended to use the next command with the venv activated
 
 ```shell
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## How to use
@@ -41,3 +41,7 @@ To run in debug mode:
 flask --app src.app run --debug
 ```
 Without debug mode:
+
+```shell
+flask --app src.app run
+```

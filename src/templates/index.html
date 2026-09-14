@@ -1,7 +1,8 @@
 <!-- Para la página principal se ha usado un template de uso público, especificamente: https://getbootstrap.com/docs/4.0/examples/ , el de dashboard-->
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -14,70 +15,80 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
-  </head>
+</head>
 
-  <body>
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Metro Monterrey</a>
+<body>
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
 
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0 px-3" href="/">
+            Metro Monterrey
+        </a>
 
+        <div class="ml-auto px-4 text-light">
+            <strong>Transporte ecológico</strong>
+        </div>
 
-
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            
-
-
-          <a class="nav-link" href="#">Sign out</a>
-
-
-
-        </li>
-      </ul>
     </nav>
 
     <div class="container-fluid">
-      <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <form method="POST" class="mt-5">
+                        <!--añade un token para evitar CSRF (cross site request forgery), basicamente alguien intentando atacar desde otro lado-->
+                        {{ form.hidden_tag() }}
+                        <label for="estacionSalida">Estación de salida</label>
 
-<form>
-  <div class="mb-3">
-    <label for="estacionSalida" class="form-label">Estación de salida</label>
-    <input type="text" class="form-control" id="estacionSalida" placeholder="Félix U.Gomez">
-  </div>
+                        <select id="estacionSalida" name="salida" class="form-control" required>
+                            <option value="" selected disabled>
+                                Selecciona una estación
+                            </option>
 
-  <div class="mb-3">
-    <label for="estacionDestino" class="form-label">Estación de destino</label>
-    <input type="text" class="form-control" id="estacionDestino" placeholder="Talleres">
-  </div>
+                            {% for estacion in estaciones %}
+                            <option value="{{ estacion }}">
+                                {{ estacion }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <label for="estacionDestino" class="mt-3">Estación de destino</label>
 
-  <button type="submit" class="btn btn-primary">Calcular ruta</button>
-</form>
+                        <select id="estacionDestino" name="destino" class="form-control" required>
+                            <option value="" selected disabled>
+                                Selecciona una estación
+                            </option>
+                            {% for estacion in estaciones %}
+                            <option value="{{ estacion }}">
+                                {{ estacion }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-3">Buscar ruta</button>
+
+                    </form>
 
 
+                </div>
+            </nav>
 
-          </div>
-        </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
- 
 
-         <img src="{{ url_for('static', filename='images/mapa_monterrey.png') }}" class="img-fluid" alt="Foto del mapa de Monterrey">
+                <img src="{{ url_for('static', filename='images/mapa_monterrey.png') }}" class="img-fluid"
+                    alt="Foto del mapa de Monterrey">
 
-          
-    <!-- Bootstrap core JavaScript
+
+                <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
+                <!-- Placed at the end of the document so the pages load faster -->
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+                <!-- Icons -->
+                <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+                <script>
+                    feather.replace()
+                </script>
 
-  </body>
+</body>
+
 </html>

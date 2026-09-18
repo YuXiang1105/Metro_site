@@ -1,6 +1,7 @@
 //Aqui hay sufrimiento de 3 horas, se hizo a mano, no se puede automatizar, se uso un lector de coordenadas en botones.js
 //dejare comentado ese lector de coordenadas para que no se vea en la pagina, pero si se necesita se puede usar
 
+//Estaciones con transbordo, creo que me falta uno, lo pongo luego TODO
 const ESTACION_CUAUHTEMOC = ["Cuauhtémoc", [7668, 4630]];
 const ESTACION_Y_GRIEGA = ["Y Griega", [8845, 4691]];
 const ESTACION_GENERAL_ZARAGOZA = ["General I. Zaragoza", [7914, 5251]];

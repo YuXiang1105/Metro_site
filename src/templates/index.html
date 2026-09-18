@@ -14,7 +14,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/dashboard/">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mapa.css') }}">
 </head>
 
 <body>
@@ -71,15 +71,24 @@
             </nav>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                HAY QUE MOVER LOS BOTONES
+                        <button id="zoomInButton">+</button>
+                        <button id="zoomOutButton">−</button>
+                        <button id="resetButton">Reset</button>
+                <div id="mapa">
+                    <div id="mapa-contenido">
+
+                    <img src="{{ url_for('static', filename='images/mapa_monterrey.png') }}" class="img-fluid"
+                        alt="Foto del mapa de Monterrey"></img>
+                    <!--Punto muñeco-->
 
 
-                <img src="{{ url_for('static', filename='images/mapa_monterrey.png') }}" class="img-fluid"
-                    alt="Foto del mapa de Monterrey">
+                    </div>
+                </div>
+            </main>
+                <!--JavaScript-->
 
-
-                <!-- Bootstrap core JavaScript
-    ================================================== -->
-                <!-- Placed at the end of the document so the pages load faster -->
+                <!--Bootstrap-->
                 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -88,6 +97,15 @@
                 <script>
                     feather.replace()
                 </script>
+
+                <!--panzoom es un framework para hacer zoom en fotos, la documentacion en:https://timmywil.com/panzoom/-->
+                <!--Se usó la demo como inspiración del codigo-->
+                <script src="https://unpkg.com/@panzoom/panzoom/dist/panzoom.min.js"></script>
+
+                <!--mis scripts-->
+                <script src="{{ url_for('static', filename='js/lineas.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/panzoom.js') }}"></script>
+                <script src="{{ url_for('static', filename='js/botones.js') }}"></script>
 
 </body>
 

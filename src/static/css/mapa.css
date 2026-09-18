@@ -1,0 +1,13 @@
+#mapa {
+    position: relative;
+}
+
+#mapa-contenido {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+
+#mapa-contenido img {
+    display: block;
+}

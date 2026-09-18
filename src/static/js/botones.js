@@ -22,26 +22,28 @@ linea6.forEach(([nombre, [x, y]]) => {
     botonCoordenadas(nombre, x, y);
 });
 
-function botonCoordenadas(nombre, coordX, coordY, radio = 8) {
+function botonCoordenadas(nombre, coordX, coordY, radio = 9) {
     const estacion = document.createElement("div");
+    estacion.id = nombre;
     estacion.title = nombre;
     estacion.style.position = "absolute";
+    //coordenadas adaptadas al tamaño del mapa, las coords cambiaban segun el zoom, esto se hizo con IA (no encontre la solucion manualmente), chatgpt especificamente
     estacion.style.left = `${coordX / ANCHO_MAPA * 100}%`;
     estacion.style.top = `${coordY / ALTO_MAPA * 100}%`;
     estacion.style.width = radio + "px";
     estacion.style.height = radio + "px";
-    //TODO HACER INVISIBLE MAS TARDE
-    estacion.style.background = "yellow";
-    estacion.style.border = "2px solid red";
-    estacion.style.borderRadius = "50%";
+    //TODO HACER INVISIBLE MAS TARDE (o si ya esta hecho, nota de que esta aqui, lo he perdido varias veces))
+    estacion.style.background = "trasparent";
+
+    estacion.style.borderRadius = "50%";//que sea circular
     estacion.style.transform = "translate(-50%, -50%)";
-    estacion.style.boxShadow = "0 0 0 2px white";
     estacion.style.zIndex = "10";
     mapa.appendChild(estacion);
 }
 
-//Lector de coordenadas para poner los puntitos de las estaciones
-
+//imprime coordenadas cuando se pulsa en el mapa
+//LPara poner los puntitos de coordenadas manualmente de las estaciones, se ha usado y se puede borrar, pero lo dejo aqui para que se vea como se ha usado
+/*
 mapa.addEventListener("click", (event) => {
 
     const imagen = mapa.querySelector("img");
@@ -51,3 +53,4 @@ mapa.addEventListener("click", (event) => {
 
     console.log("X:", Math.round(x), "Y:", Math.round(y));
 });
+*/

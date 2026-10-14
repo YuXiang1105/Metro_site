@@ -38,10 +38,10 @@ The command must be runned in the / of the project.
 To run in debug mode:
 
 ```shell
-flask --app src.app run --debug
+python -m flask --app src.app run --debug
 ```
 Without debug mode:
 
 ```shell
-flask --app src.app run
+python -m flask --app src.app run
 ```
